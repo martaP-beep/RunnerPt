@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class GameManager : MonoBehaviour
     public float worldScrollingSpeed = 0.2f;
 
     public Text scoreText;
+
+    public bool inGame;
+
+    public GameObject restartButton;
 
     float score;
 
@@ -20,11 +25,31 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        InitializeGame();
     }
 
   
+    void InitializeGame()
+    {
+        inGame = true;
+    }
+
+    public void GameOver()
+    {
+        inGame = false;
+        restartButton.SetActive(true);
+    }
+
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     void FixedUpdate()
     {
+        if (GameManager.instance.inGame == false) return;
+
         score += worldScrollingSpeed;
         scoreText.text = score.ToString("0");
     }
