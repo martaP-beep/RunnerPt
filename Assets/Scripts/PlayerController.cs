@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Obstacle")){
             PlayerDeath();
         }
+        else if (collision.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            GameManager.instance.CoinCollected();
+        }
     }
 
     void PlayerDeath()

@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject restartButton;
 
+    public Text coinText;
+    int coins;
+
     float score;
 
     // Start is called before the first frame update
@@ -32,6 +35,16 @@ public class GameManager : MonoBehaviour
     void InitializeGame()
     {
         inGame = true;
+
+        if (PlayerPrefs.HasKey("coins"))
+        {
+            coins = PlayerPrefs.GetInt("coins");
+        }
+        else
+        {
+            coins = 0;
+        }
+        coinText.text = coins.ToString();
     }
 
     public void GameOver()
@@ -52,5 +65,12 @@ public class GameManager : MonoBehaviour
 
         score += worldScrollingSpeed;
         scoreText.text = score.ToString("0");
+    }
+
+    public void CoinCollected()
+    {
+        coins += 1;
+        coinText.text = coins.ToString();
+        PlayerPrefs.SetInt("coins", coins);
     }
 }
