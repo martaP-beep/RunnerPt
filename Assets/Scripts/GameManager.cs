@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     public GameObject restartButton;
 
     public Text coinText;
+
+    public Immortality immortality;
+    public Magnet magnet;
+
     int coins;
 
     float score;
@@ -72,5 +76,26 @@ public class GameManager : MonoBehaviour
         coins += 1;
         coinText.text = coins.ToString();
         PlayerPrefs.SetInt("coins", coins);
+    }
+
+    public void ImmortalityCollected()
+    {
+
+        if (immortality.isActive)
+        {
+            CancelImmortality();
+            CancelInvoke("CancelImmortality");
+        }
+
+        immortality.isActive = true;
+        worldScrollingSpeed += immortality.GetSpeed();
+
+        Invoke("CancelImmortality", immortality.GetDuration());
+    }
+
+    void CancelImmortality()
+    {
+        immortality.isActive = false;
+        worldScrollingSpeed -= immortality.GetSpeed();
     }
 }
