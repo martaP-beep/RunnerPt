@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
             coins = 0;
         }
         coinText.text = coins.ToString();
+
+        immortality.isActive = false;
+        magnet.isActive = false;
     }
 
     public void GameOver()
@@ -98,4 +101,21 @@ public class GameManager : MonoBehaviour
         immortality.isActive = false;
         worldScrollingSpeed -= immortality.GetSpeed();
     }
+
+    public void MagnetCollected()
+    {
+        if (magnet.isActive)
+        {
+            CancelMagnet();
+            CancelInvoke("CancelMagnet");
+        }
+        magnet.isActive = true;
+        Invoke("CancelMagnet", magnet.GetDuration());
+    }
+
+    void CancelMagnet()
+    {
+        magnet.isActive = false;
+    }
+
 }

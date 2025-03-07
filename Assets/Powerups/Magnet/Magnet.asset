@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Magnet
   m_EditorClassIdentifier: 
   isActive: 0
-  duration: {fileID: 11400000, guid: 35c0f533ef373ab41abc8502342dac7e, type: 2}
-  speed: {fileID: 11400000, guid: 35c0f533ef373ab41abc8502342dac7e, type: 2}
-  range: {fileID: 11400000, guid: 35c0f533ef373ab41abc8502342dac7e, type: 2}
+  duration: {fileID: 11400000, guid: ede11458cbb6c9f4fb337a4d5106ffc1, type: 2}
+  speed: {fileID: 11400000, guid: e985e380e8c498148905e12f43834e03, type: 2}
+  range: {fileID: 11400000, guid: ad45918796b5c15499fe4707cf11470b, type: 2}
