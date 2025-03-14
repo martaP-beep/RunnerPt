@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.CompareTag("Coin"))
         {
+            SoundManager.instance.PlayCoin();
+
             Destroy(collision.gameObject);
             GameManager.instance.CoinCollected();
         }
