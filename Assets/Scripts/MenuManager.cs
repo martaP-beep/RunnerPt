@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public GameObject menuPanel;
+    public GameObject storePanel;
+
     public Text coinsText;
     int coins = 0;
 
@@ -29,4 +32,18 @@ public class MenuManager : MonoBehaviour
     {
 
     }
+
+
+    public void OpenStore()
+    {
+        storePanel.SetActive(true);
+        menuPanel.SetActive(false);
+    }
+
+    public void CloseStore()
+    {
+        storePanel.SetActive(false);
+        menuPanel.SetActive(true);
+    }
+
 }
